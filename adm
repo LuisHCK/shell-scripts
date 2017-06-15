@@ -1,0 +1,23 @@
+#!/bin/bash
+if [[ $1 == "m" ]]; then
+    cd projects/Administra && 
+    source env/bin/activate && 
+    cd administra && 
+    ./manage.py makemigrations && 
+    ./manage.py migrate
+
+elif [[ $1 == "s" ]]; then
+    cd projects/Administra && 
+    source env/bin/activate && 
+    cd administra && 
+    ./manage.py runserver
+
+elif [[ $1 == "sh"  ]]; then
+    cd projects/Administra &&
+    source env/bin/activate &&
+    cd administra &&
+    ./manage.py shell
+
+else
+    echo "Simplifica la navegacion y ejecución de comandos comunes para ADM"
+fi

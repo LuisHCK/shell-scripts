@@ -1,0 +1,77 @@
+#!/bin/bash
+echo "  $(tput setaf 2)Welcome to LuisHCK's automatic enviroment installer"
+
+echo "Updating system"
+	sudo apt-get update
+	sudo apt-get -y upgrade
+
+echo "================================================"
+echo "Installing ADDI on System"
+	chmod +x ~/addi
+	cp ~/addi /bin/
+
+echo "================================================"
+echo "Installing PostgreSQL"
+	sudo apt-get install -y postgresql postgresql-contrib
+	sudo -u postgres createuser --interactive
+
+echo "================================================"
+echo "Installing Python3 and Django"
+	sudo apt-get install -y python3
+	sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+	sudo apt-get install -y python3-pip
+	sudo apt-get install -y python3-venv
+	pip3 install django psycopg2
+
+echo "================================================"
+echo "Installing Editors and other Stuff"
+	echo " $(tput setaf 4)1-) Sublime Text 3"
+	addi https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
+	
+	echo " $(tput setaf 4)2-) Visual Studio Code"
+	addi https://go.microsoft.com/fwlink/?LinkID=760868
+
+	echo " $(tput setaf 4)3-) PgAdmin3"
+	sudo apt-get install -y pgadmin3
+
+	echo " $(tput setaf 4)4-) InkScape"
+	sudo apt-get install -y InkScape
+
+	echo " $(tput setaf 4)5-) Gimp"
+	sudo apt-get install -y gimp
+
+	echo " $(tput setaf 4)6-) GIT"
+	sudo apt-get install -y git
+	git config --global user.name "LuisHCK"
+	git config --global user.email "luisjcenteno@live.com"
+
+	echo " $(tput setaf 4)7-) Installing Opera"
+	addi http://download1.operacdn.com/pub/opera/desktop/45.0.2552.898/linux/opera-stable_45.0.2552.898_amd64.deb
+	
+	echo " $(tput setaf 4)8-) Installing Nodejs"
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+
+echo "================================================"
+echo "Installing Ruby and Rails enviroment"
+	sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
+	&&
+	sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+	&&
+	gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+	&&
+	curl -sSL https://get.rvm.io | bash -s stable
+	&&
+	source ~/.rvm/scripts/rvm
+	&&
+	rvm install 2.4.0
+	&&
+	rvm use 2.4.0 --default
+	&&
+	ruby -v
+	&&
+	gem install bundler --no-document
+	&&
+	gem install rails --no-document
+
+
